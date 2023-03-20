@@ -23,3 +23,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('getIFrames',(iframeLocator)=>{
+    cy.get(iframeLocator)
+    .its('0.contenDocument.body')
+    .should('be.visible')
+    .then(cy.wrap)
+})
